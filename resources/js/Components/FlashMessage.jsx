@@ -7,7 +7,7 @@ const FlashMessage = ({ flash }) => {
     const [visible, setVisible] = useState(!!flash.success || !!flash.error);
     useEffect(() => {
         if (flash.success || flash.error) {
-            setVisible(true);  // ถ้ามีข้อความ success หรือ error ให้ตั้งค่า visible เป็น true
+            setVisible(true);  // ถ้าerror ให้ตั้งค่า visible เป็น true
 
             const timer = setTimeout(() => { // ตั้งเวลา 3 วินาทีเพื่อซ่อนข้อความ
                 setVisible(false);

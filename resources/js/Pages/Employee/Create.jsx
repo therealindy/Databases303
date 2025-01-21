@@ -23,6 +23,7 @@ const CreateEmployee = ({ departments }) => {
 
     const { flash } = usePage().props; // ดึงข้อมูล flash message จาก props
 
+    //การเพิ่มรูปคือเข้าไปในemployeec แล้วใช้คำสั่ง alter table employees add img varchar(2000); เพื่อเพิ่ม column ในการเก็บ URL
     // ฟังก์ชันสำหรับจัดการการเปลี่ยนแปลงไฟล์
     const handFileChange = (e) => {
         const file = e.target.files[0]; // ดึงไฟล์ที่เลือก
