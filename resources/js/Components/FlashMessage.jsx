@@ -10,7 +10,7 @@ const FlashMessage = ({ flash }) => {
             setVisible(true);  // ถ้าerror ให้ตั้งค่า visible เป็น true
 
             const timer = setTimeout(() => { // ตั้งเวลา 3 วินาทีเพื่อซ่อนข้อความ
-                setVisible(false);
+                setVisible(false);  
             }, 3000);
 
             return () => clearTimeout(timer);  // คืนค่าฟังก์ชันที่ใช้ในการลบ timer เมื่อคอมโพเนนต์ถูก unmount หรือ flash เปลี่ยนแปลง
