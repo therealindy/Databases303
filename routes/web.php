@@ -8,7 +8,6 @@ use Inertia\Inertia;
 
 //หน้าที่คือการเรียกใช้ข้อมูลจากEmployeeController
 
-
 Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -29,8 +28,9 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/employee', [EmployeeController::class, 'index'])->name('employee.index'); //เส้นทางเพื่อแสดงรายการพนักงาน จัดการโดย EmployeeController จะเปลี่ยนชื่อให้ใช้งานง่ายขึ้น
+
     Route::get('/employee/create', [EmployeeController::class, 'create'])->name('employee.create'); //เส้นทางเพื่อแสดงฟอร์มสำหรับเพิ่มข้อมูลพนักงาน จัดการโดย EmployeeController จะเปลี่ยนชื่อให้ใช้งานง่ายขึ้น
-    Route::post('/employee', [EmployeeController::class, 'store'])->name('employee.store'); //เส้นทางเพื่อบันทึกข้อมูลพนักงาน จัดการโดย EmployeeController จะเปลี่ยนชื่อให้ใช้งานง่ายขึ้น
+    Route::post('/employee', [EmployeeController::class, 'store'])->name('employee.store'); //เส้นทางเพื่อบันทึกข้อมูลพนักงาน โดยจะไปแสดงในหน้า employee
 });
 
 require __DIR__.'/auth.php';

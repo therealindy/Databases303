@@ -1,6 +1,6 @@
 import { useForm } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import FlashMessage from '@/Components/FlashMessage';
+import FlashMessage from '@/Components/FlashMessage'; 
 import { usePage } from '@inertiajs/react';
 
 const CreateEmployee = ({ departments }) => {
@@ -28,7 +28,7 @@ const CreateEmployee = ({ departments }) => {
     const handFileChange = (e) => {
         const file = e.target.files[0]; // ดึงไฟล์ที่เลือก
         if (file) {
-            const path = URL.createObjectURL(file); // สร้าง URL ของไฟล์
+            const path = URL.createObjectURL(file); // สรเาง URL จากไฟล์ที่เลือก
             data.img = path; // เก็บ URL ของไฟล์ใน data.img
         }
     };

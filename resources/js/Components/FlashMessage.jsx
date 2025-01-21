@@ -10,12 +10,12 @@ const FlashMessage = ({ flash }) => {
             setVisible(true);  // ถ้าerror ให้ตั้งค่า visible เป็น true
 
             const timer = setTimeout(() => { // ตั้งเวลา 3 วินาทีเพื่อซ่อนข้อความ
-                setVisible(false);  
+                setVisible(false);
             }, 3000);
 
-            return () => clearTimeout(timer);  // คืนค่าฟังก์ชันที่ใช้ในการลบ timer เมื่อคอมโพเนนต์ถูก unmount หรือ flash เปลี่ยนแปลง
+            return () => clearTimeout(timer);  // หลังจากที่ set visible ให้คืนค่า timer
         }
-    }, [flash]); // ให้ useEffect ทำงานเมื่อ flash เปลี่ยนแปลง
+    }, [flash]); 
 
     if (!visible) return null; // ถ้า visible เป็น false ไม่ต้องแสดงผลอะไร
     return (  // แสดงข้อความ flash

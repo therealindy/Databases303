@@ -104,9 +104,8 @@ class EmployeeController extends Controller
 
         });
 
-        //ส่งข้อความไปที่หน้า Index ว่าบันทึกข้อมูลสำเร็จ
             return redirect()->route('employee.index')
-                ->with('success', 'Employee created successfully.');
+                ->with('success', 'Employee created successfully.');  //ส่งข้อความไปที่หน้า Index ว่าบันทึกข้อมูลสำเร็จ
         } catch (\Exception $e) {
             return back()->with('error', 'Failed to create employee. Please try again.'); //ถ้ามีข้อผิดพลาดจะส่งข้อความไปที่หน้า Create
         }
