@@ -66,7 +66,7 @@ export default function Index({ employees, query }) {
                                         <td className="px-6 py-4 text-center whitespace-nowrap text-sm font-medium text-gray-700">{employee.birth_date}</td>
                                         <td className="px-6 py-4 text-center whitespace-nowrap text-sm font-medium text-gray-700">{employee.gender}</td>
                                         <td className="px-6 py-4 text-center whitespace-nowrap text-sm font-medium text-gray-700">
-                                            <img src={employee.img} className="h-6 mx-auto" /> {/* แสดงรูปภาพถ้ามี */}
+                                            <img src={employee.img} className="h-6 mx-auto" /> {/*เรียกใช้จากdatabaseได้เลย*/}
                                         </td>
                                     </tr>
                                 ))}
