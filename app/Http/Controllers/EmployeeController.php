@@ -69,7 +69,7 @@ class EmployeeController extends Controller
             'birth_date' => 'required|date',
             'hire_date' => 'date',
             'dept_no' => 'required',
-            'img'   => 'nullable|required', //ฟิลด์นี้สามารถเป็นค่าว่างได้ เพราะเป็น nullable
+            'img'   => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048', // เพิ่มการตรวจสอบ img
 
         ]);
 
