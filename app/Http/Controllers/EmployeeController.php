@@ -82,6 +82,17 @@ class EmployeeController extends Controller
             //ฝากข้อมูลลงใน log แล้วแสดงค่า emp_no ที่ได้
             Log::info($newEmpNo);
 
+            $img = null; //กำหนดค่าเริ่มต้นให้ $img เป็น null
+
+            if(request()->hasFile('img')){ //ตรวจสอบว่ามีไฟล์ img หรือไม่
+                $file = request()->file('img'); // ดึงข้อมูลไฟล์ img มาเก็บไว้ในตัวแปร $file
+                $extention = $file->getClientOriginalExtension(); //ดึงนามสกุลไฟล์มาเก็บไว้ในตัวแปร $extention
+                $filename = $newEmpNo.'.'.$extention; //สร้างชื่อไฟล์ใหม่โดยใช้ค่า emp_no และนามสกุลไฟล์
+                $path = 'img/employee/'; //กำหนด path ที่จะบันทึกไฟล์
+                $file->move(public_path($path), $filename); //ย้ายไฟล์ไปยัง path ไปเก็บไว้ในโฟลเดอร์ public/img/employee
+                $img = $path.$filename; //กำหนดค่าให้กับ $img
+            }
+
             //บันทึกข้อมูลลงในตาราง employees
             DB::table('employees')->insert([
                 'emp_no' => $newEmpNo,
@@ -90,7 +101,7 @@ class EmployeeController extends Controller
                 'last_name' => $validated['last_name'],
                 'gender' => $validated['gender'],
                 'hire_date' => $validated['hire_date'] ?? now(),
-                'img' => $validated['img'],
+                'img' => $img,
             ]);
 
             //บันทึกข้อมูลลงในตาราง dept_emp

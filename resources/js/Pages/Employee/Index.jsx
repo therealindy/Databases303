@@ -66,13 +66,13 @@ export default function Index({ employees, query }) {
                                         <td className="px-6 py-4 text-center whitespace-nowrap text-sm font-medium text-gray-700">{employee.birth_date}</td>
                                         <td className="px-6 py-4 text-center whitespace-nowrap text-sm font-medium text-gray-700">{employee.gender}</td>
                                         <td className="px-6 py-4 text-center whitespace-nowrap text-sm font-medium text-gray-700">
-                                            {employee.img && <img src={employee.img} className="h-6 mx-auto" />} {/* แสดงรูปภาพถ้ามี */}
+                                            <img src={employee.img} className="h-6 mx-auto" /> {/* แสดงรูปภาพถ้ามี */}
                                         </td>
                                     </tr>
                                 ))}
-                                </tbody>
-                                </table>
-                                {/* ปุ่มสำหรับเปลี่ยนหน้า */}
+                            </tbody>
+                        </table>
+                        {/* ปุ่มสำหรับเปลี่ยนหน้า */}
                         <div className="flex justify-center w-full max-w-2xl mx-auto py-5 space-x-12">
                             <button
                                 onClick={() =>

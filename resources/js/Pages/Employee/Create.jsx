@@ -1,6 +1,6 @@
 import { useForm } from '@inertiajs/react';
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout';
-import FlashMessage from '@/Components/FlashMessage'; 
+import FlashMessage from '@/Components/FlashMessage';
 import { usePage } from '@inertiajs/react';
 
 const CreateEmployee = ({ departments }) => {
@@ -24,12 +24,11 @@ const CreateEmployee = ({ departments }) => {
     const { flash } = usePage().props; // ดึงข้อมูล flash message จาก props
 
     //การเพิ่มรูปคือเข้าไปในemployeec แล้วใช้คำสั่ง alter table employees add img varchar(2000); เพื่อเพิ่ม column ในการเก็บ URL
-    // ฟังก์ชันสำหรับจัดการการเปลี่ยนแปลงไฟล์
-    const handFileChange = (e) => {
-        const file = e.target.files[0]; // ดึงไฟล์ที่เลือก
-        if (file) {
-            const path = URL.createObjectURL(file); // สรเาง URL จากไฟล์ที่เลือก
-            data.img = path; // เก็บ URL ของไฟล์ใน data.img
+
+    const handleFileChange = (e) => { // ฟังก์ชัน handleFileChange สำหรับจัดการเมื่อไฟล์ถูกเปลี่ยน
+        const file = e.target.files[0]; // ดึงไฟล์แรกจาก input
+        if (file) { // ถ้ามีไฟล์
+            setData('img', file); // ให้เซ็ตค่าของ img ให้เป็นไฟล์ที่เลือก
         }
     };
 
@@ -117,7 +116,7 @@ const CreateEmployee = ({ departments }) => {
                                 <input
                                     type="file"
                                     accept="image/*"
-                                    onChange={handFileChange}
+                                    onChange={handleFileChange}
                                     className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                                 />
                                 {errors.img && <div className="text-red-500 text-sm">{errors.img}</div>}
