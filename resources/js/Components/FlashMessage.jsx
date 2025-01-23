@@ -3,11 +3,14 @@ import { useEffect, useState } from 'react';
 //หน้านี้มีหน้าที่เป็นคอมโพเนนต์ React ที่ทำหน้าที่แสดงข้อความแจ้งเตือน (flash message) โดยจะแสดงข้อความ success หรือ error เป็นเวลา 3 วินาทีแล้วซ่อนข้อความ
 
 const FlashMessage = ({ flash }) => {
-    // สร้าง state สำหรับ visible โดยเริ่มต้นเป็น true ถ้ามีข้อความ success หรือ error
+    // ใช้ useState เพื่อสร้าง state ชื่อ visible และฟังก์ชัน setVisible สำหรับเปลี่ยนแปลงสถานะนั้นค่าเริ่มต้นของ visible จะเป็น true
+    // ถ้ามีค่า flash.success หรือ flash.error (ใช้ !! เพื่อแปลงค่าเป็น boolean)
+    //ใช้ useEffect เพื่อทำงานเมื่อคอมโพเนนต์ถูกเรนเดอร์ใหม่หรือเมื่อค่า flash.success หรือ flash.error เปลี่ยนแปลง
+    // ถ้าerror ให้ตั้งค่า visible เป็น true
     const [visible, setVisible] = useState(!!flash.success || !!flash.error);
     useEffect(() => {
         if (flash.success || flash.error) {
-            setVisible(true);  // ถ้าerror ให้ตั้งค่า visible เป็น true
+            setVisible(true);
 
             const timer = setTimeout(() => { // ตั้งเวลา 3 วินาทีเพื่อซ่อนข้อความ
                 setVisible(false);
@@ -15,7 +18,7 @@ const FlashMessage = ({ flash }) => {
 
             return () => clearTimeout(timer);  // หลังจากที่ set visible ให้คืนค่า timer
         }
-    }, [flash]); 
+    }, [flash]);
 
     if (!visible) return null; // ถ้า visible เป็น false ไม่ต้องแสดงผลอะไร
     return (  // แสดงข้อความ flash
